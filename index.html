@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='./styles.css'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='container'>
+    <div id='start'>Start Quiz!</div>
+    <div id='quiz' style = 'display : none;'>
+        <div id='question'><p> Question </p></div>
+        <div id = 'qImg'></div>
+        <div id='choices'>
+            <div class='choice' id='A' onclick='checkAnswer("A")'>A</div>
+            <div class='choice' id='B' onclick='checkAnswer("B")'>B</div>
+            <div class='choice' id='C' onclick='checkAnswer("C")'>C</div>
+        </div>
+        <div id='timer'>
+            <div id='counter'>10</div>
+            <div id='btimeGague'></div>
+            <div id='timeGauge'></div>
+        </div>
+        <div id='progress' class='prog'></div>
+    </div>
+    <div id='scoreContainer' style='display: none;'>
+    
+    </div>
+
+    
+    </div>
+    <script src='./script.js'></script>
+</body>
+</html>
