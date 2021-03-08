@@ -29,18 +29,18 @@ let questions = [
         correct : 'A'
 
     },{
-        question : 'Eat my ass?',
+        question : 'What does CSS stand for?',
         imgSrc : './img/css.png',
-        choiceA : 'John Resig',
-        choiceB : 'Bill Gates',
-        choiceC : 'Donald Trump',
+        choiceA : 'Central Standard Styles',
+        choiceB : 'Cascading Style Sheets',
+        choiceC : 'Circus Super Squirrels',
         correct : 'B'
     },{
-        question : 'I would fuck?',
+        question : 'What does HTML stand for?',
         imgSrc : './img/html.png',
-        choiceA : 'John Resig',
-        choiceB : 'Bill Gates',
-        choiceC : 'Donald Trump',
+        choiceA : 'Hyper Technical Markup Language',
+        choiceB : 'Hyper Transparent Markup Language',
+        choiceC : 'Hyper Text Markup Language',
         correct : 'C'
     }
 ];
@@ -49,11 +49,14 @@ const lastQuestion = questions.length -1;
 let runningQuestion = 0;
 
 let answerIsCorrect = () => {
-    document.getElementById(runningQuestion).style.backgroundColor = "0f0";
+    document.querySelectorAll('.prog')[runningQuestion].setAttribute('style', "background-color: #0f0;");
+    console.log("correct")
 }
 
+
 let answerIsWrong = () => {
-    document.getElementById(runningQuestion).style.backgroundColor = "f00";
+    document.querySelectorAll('.prog')[runningQuestion].setAttribute('style', "background-color: #f00;");
+    console.log("wrong")
 }
 
 
@@ -71,19 +74,20 @@ let renderQuestion = () => {
 }
 
 function checkAnswer (answer) {
-    if(answer == questions[runningQuestion].correct) {
+    if(questions[runningQuestion].correct == answer) {
         score++;
         answerIsCorrect();
     } else {
         answerIsWrong();
     }
-    count = 0;
+    
     if(runningQuestion < lastQuestion) {
+        count = 0;
         runningQuestion++;
         renderQuestion();
     } else {
         clearInterval(TIMER);
-
+        scoreRender();
     }
 }
 
@@ -95,15 +99,15 @@ let renderProgress = () => {
 
 let score = 0;
 
-answer => { if (questions[runningQuestionIndex].correct == answer) {
+answer => { if (questions[runningQuestion].correct == answer) {
     score++;
     answerIsCorrect();
     } else {
     answerIsWrong();
     }
-    if(runningQuestionIndex < lastQuestionIndex) {
+    if(runningQuestion < lastQuestion) {
     count = 0;
-    runningQuestionIndex++;
+    runningQuestion++;
     renderQuestion();
 
     } else {
